@@ -4,3 +4,11 @@
 //首先根据配置文件来打开要更新数据库, 然后执行同步,配置文件可以设定不同步
 package main
 
+import (
+    "fmt"
+    "github.com/hefju/DbSync/CSharp"
+)
+func main(){
+    CSharp.Convert()
+    fmt.Println("main end")
+}
