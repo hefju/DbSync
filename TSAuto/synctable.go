@@ -14,7 +14,7 @@ var engine *xorm.Engine
 func init(){
 	var err error
 	engine, err = xorm.NewEngine("sqlite3", "./test.db")
-	//engine.ShowSQL = true
+	engine.ShowSQL = true
 	engine.SetMapper(core.SameMapper{})
 	if err != nil {
 		log.Println(err)

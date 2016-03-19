@@ -28,7 +28,7 @@ func dealwithonline(line string) {//处理每一行代码
 		fmt.Println(strings.Replace(line, "public class", "type", -1) + " struct{")
 	} else {
 		if line == "}" {
-			fmt.Println("CreateAt time.Time`xorm:\"created\"`")
+			fmt.Println("CreateAt time.Time`xorm:\"created\"`")//在非xorm代码下操作还是无效
 			fmt.Println("}")
 		} else {//处理public int ID { get; set; }
 			list := strings.Split(line, " ")
