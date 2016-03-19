@@ -7,8 +7,12 @@ package main
 import (
     "fmt"
     "github.com/hefju/DbSync/CSharp"
+    "github.com/hefju/DbSync/TSAuto"
 )
 func main(){
+
+    CSharp.Donothing()
     CSharp.Convert()
+    TSAuto.Donothing()//   TSAuto.SyncDb()
     fmt.Println("main end")
 }

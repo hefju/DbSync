@@ -7,6 +7,10 @@ import (
 	"strings"
 )
 
+//为了避免修改import,做一个无用的方法
+func Donothing(){
+
+}
 //将c#的类转换成golang的struct
 func ConvertToStruct(class string) {
 	reader := bytes.NewBufferString(class)
@@ -24,6 +28,7 @@ func dealwithonline(line string) {//处理每一行代码
 		fmt.Println(strings.Replace(line, "public class", "type", -1) + " struct{")
 	} else {
 		if line == "}" {
+			fmt.Println("CreateAt time.Time`xorm:\"created\"`")
 			fmt.Println("}")
 		} else {//处理public int ID { get; set; }
 			list := strings.Split(line, " ")

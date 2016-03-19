@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"os"
 )
-func main(){
+func main0(){
 	array:=make( []*Config,5)
 	array[0]=&Config{Key:"sqlite",Value:"local.db"}
 	array[1]=&Config{Key:"mysql",Value:"server:192.168.1.100"}
