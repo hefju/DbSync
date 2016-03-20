@@ -14,6 +14,6 @@ func main(){
     CSharp.Donothing()
     CSharp.Convert()
     TSAuto.Donothing()//   TSAuto.SyncDb()
-    //TSAuto.Insert()
+    TSAuto.Insert()
     fmt.Println("main end")
 }

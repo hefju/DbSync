@@ -53,6 +53,7 @@ func Convert() {
     public class Coordinate
     {
         public int ID { get; set; }
+        public int IsZero { get; set; }  //是否零点
 
         public int FormOrder { get; set; }  //窗口顺序
         public string FormName { get; set; } //窗口名

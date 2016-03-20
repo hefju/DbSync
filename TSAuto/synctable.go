@@ -14,7 +14,7 @@ var engine *xorm.Engine
 func init(){
 	var err error
 	engine, err = xorm.NewEngine("sqlite3", "./test.db")
-	engine.ShowSQL = true
+	//engine.ShowSQL = true
 	engine.SetMapper(core.SameMapper{})
 	if err != nil {
 		log.Println(err)
@@ -44,6 +44,7 @@ func Insert()int64{
 
 type Coordinate struct {
 	ID                int64  //`xorm:pk,autoincr`
+	IsZero int
 	FormOrder         int
 	FormName          string
 	CoordinateType    string
@@ -57,5 +58,6 @@ type Coordinate struct {
 	AAxis             float64
 	BAxis             float64
 	CAxis             float64
+ Settled int
 	CreateAt time.Time`xorm:"created"`
 }
