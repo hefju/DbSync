@@ -4,14 +4,17 @@ import (
 	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 	_ "github.com/mattn/go-sqlite3"
-	"time"
 	"log"
+	"time"
 )
-func Donothing(){
+
+func Donothing() {
 
 }
+
 var engine *xorm.Engine
-func init(){
+
+func init() {
 	var err error
 	engine, err = xorm.NewEngine("sqlite3", "./test.db")
 	//engine.ShowSQL = true
@@ -19,32 +22,32 @@ func init(){
 	if err != nil {
 		log.Println(err)
 	}
-	err = engine.Sync2(new(Coordinate))
+	err = engine.Sync2(new(Coordinate),new(PageProfile))
 	if err != nil {
 		log.Println(err)
 	}
 }
 
 func SyncDb() {
-//	var err error
+	//	var err error
 
-//	engine, err = xorm.NewEngine("sqlite3", "./test.db")
-//	log.Println("end")
+	//	engine, err = xorm.NewEngine("sqlite3", "./test.db")
+	//	log.Println("end")
 }
 
-func Insert()int64{
+func Insert() int64 {
 	//SyncDb()
-	c:=Coordinate{FormOrder:1,FormName:"first form"}
-	count,err:=engine.Insert(&c)//InsertOne
-	if err!=nil{
+	c := Coordinate{FormOrder: 1, FormName: "first form"}
+	count, err := engine.Insert(&c) //InsertOne
+	if err != nil {
 		log.Fatal(err)
 	}
 	return count
 }
 
 type Coordinate struct {
-	ID                int64  //`xorm:pk,autoincr`
-	IsZero int
+	ID                int64 //`xorm:pk,autoincr`
+	IsZero            int
 	FormOrder         int
 	FormName          string
 	CoordinateType    string
@@ -58,6 +61,15 @@ type Coordinate struct {
 	AAxis             float64
 	BAxis             float64
 	CAxis             float64
- Settled int
-	CreateAt time.Time`xorm:"created"`
+	Settled           int
+	CreateAt          time.Time `xorm:"created"`
+}
+type PageProfile struct {
+	ID          int64
+	FormName    string
+	ItemType    string
+	ItemOrder   int
+	ItemNumber  string
+	ItemName_EN string
+	ItemName_CN string
 }
