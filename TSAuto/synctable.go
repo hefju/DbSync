@@ -37,7 +37,7 @@ func SyncDb() {
 
 func Insert() int64 {
 	//SyncDb()
-	c := Coordinate{FormOrder: 1, FormName: "first form"}
+	c := Coordinate{COrder: 1, CoordinateName: "first form"}
 	count, err := engine.Insert(&c) //InsertOne
 	if err != nil {
 		log.Fatal(err)
@@ -48,13 +48,9 @@ func Insert() int64 {
 type Coordinate struct {
 	ID                int64 //`xorm:pk,autoincr`
 	IsZero            int
-	FormOrder         int
-	FormName          string
-	CoordinateType    string
-	PointOrder        float64
-	CoordinateNumber  string
-	CoordinateName_EN string
-	CoordinateName_CN string
+	ZkyID int
+	COrder int
+	CoordinateName  string
 	XAxis             float64
 	YAxis             float64
 	ZAxis             float64
@@ -62,6 +58,7 @@ type Coordinate struct {
 	BAxis             float64
 	CAxis             float64
 	Settled           int
+	UpdatedAt time.Time `xorm:"updated"`
 	CreateAt          time.Time `xorm:"created"`
 }
 type PageProfile struct {
@@ -70,6 +67,8 @@ type PageProfile struct {
 	ItemType    string
 	ItemOrder   int
 	ItemNumber  string
-	ItemName_EN string
 	ItemName_CN string
+	ItemName_EN string
+	UpdatedAt time.Time `xorm:"updated"`
+	CreateAt          time.Time `xorm:"created"`
 }
