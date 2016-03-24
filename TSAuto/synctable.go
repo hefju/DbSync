@@ -47,6 +47,7 @@ func Insert() int64 {
 
 type Coordinate struct {
 	ID                int64 //`xorm:pk,autoincr`
+	CoordinateID     int
 	IsZero            int
 	ZkyID int
 	COrder int
