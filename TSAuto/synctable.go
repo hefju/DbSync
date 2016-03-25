@@ -68,6 +68,7 @@ type PageProfile struct {
 	ItemType    string
 	ItemOrder   int
 	ItemNumber  string
+	Display_CN string
 	ItemName_CN string
 	ItemName_EN string
 	UpdatedAt time.Time `xorm:"updated"`
