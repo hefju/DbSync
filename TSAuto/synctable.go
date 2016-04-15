@@ -52,6 +52,7 @@ type Coordinate struct {
 	FormName string
 	ItemType string
 	CoordinateOrder int
+	AreaName	string
 	CoordinateName  string
 	CoordinateDesc  string
 	XAxis             float64
@@ -70,6 +71,7 @@ type PageProfile struct {
 	FormName    string
 	ItemType    string
 	ItemOrder   int
+	AreaName	string
 	ItemNumber  string
 	Display_CN string
 	ItemName_CN string
