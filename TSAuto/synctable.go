@@ -73,9 +73,10 @@ type PageProfile struct {
 	ItemOrder   int
 	AreaName	string
 	ItemNumber  string
-	Display_CN string
 	ItemName_CN string
+	Display_CN string
 	ItemName_EN string
+	Display_EN string
 	UpdatedAt time.Time `xorm:"updated"`
 	CreateAt          time.Time `xorm:"created"`
 }
