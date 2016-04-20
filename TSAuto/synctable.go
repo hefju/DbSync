@@ -68,6 +68,7 @@ type Coordinate struct {
 }
 type PageProfile struct {
 	ID          int64
+	CustomID	string
 	FormName    string
 	ItemType    string
 	ItemOrder   int
