@@ -48,7 +48,7 @@ func Insert() int64 {
 type Coordinate struct {
 	ID                int64 //`xorm:pk,autoincr`
 	CoordinateID     int
-
+	CustomID	string
 	FormName string
 	ItemType string
 	CoordinateOrder int
