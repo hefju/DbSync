@@ -12,8 +12,9 @@ import (
 func main(){
 
     CSharp.Donothing()
-    CSharp.Convert()
+   // CSharp.Convert()
     TSAuto.Donothing()//   TSAuto.SyncDb()
-    TSAuto.SyncDb()
+   // TSAuto.SyncDb()
+    TSAuto. Update0508()
     fmt.Println("main end")
 }
