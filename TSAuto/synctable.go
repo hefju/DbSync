@@ -23,7 +23,7 @@ func init() {
 		log.Println(err)
 	}
 	err = engine.Sync2(new(Coordinate), new(PageProfile),
-		new(Microplate), new(MicroplateInfo), new(SystemImaging), new(IndependentImaging))
+		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging))
 	if err != nil {
 		log.Println(err)
 	}
@@ -103,6 +103,19 @@ type MicroplateInfo struct {
 	Pitch_y      float32
 	Radius       float32
 	Description  string
+}
+
+
+type MicroplateInfo2 struct {
+	ID           int64
+	MicroplateID int
+	Manufacturer string
+	Wells6 string
+	Wells12 string
+	Wells24 string
+	Wells48 string
+	Wells96 string
+
 }
 type SystemImaging struct {
 	ID                int64
