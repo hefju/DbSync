@@ -23,7 +23,9 @@ func init() {
 		log.Println(err)
 	}
 	err = engine.Sync2(new(Coordinate), new(PageProfile),
-		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging))
+		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
+	new(TaskSchedule))
+
 	if err != nil {
 		log.Println(err)
 	}
@@ -136,4 +138,14 @@ type IndependentImaging struct {
 	StartTime string
 	EndTime   string
 	User      string
+}
+
+type TaskSchedule struct {
+	ID int64
+	Name string//拍照
+	Description string
+	Time1 string
+	Time2 string
+	Status string//Unstart, Running, Stopp, Finish
+
 }
