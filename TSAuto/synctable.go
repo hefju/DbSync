@@ -23,7 +23,8 @@ func init() {
 		log.Println(err)
 	}
 	err = engine.Sync2(new(Coordinate), new(PageProfile),
-		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging))
+		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
+		new(SystemConfig))
 	if err != nil {
 		log.Println(err)
 	}
@@ -137,3 +138,12 @@ type IndependentImaging struct {
 	EndTime   string
 	User      string
 }
+
+type SystemConfig struct{
+	ID int64
+	Category string
+	Key string
+	Value string
+	CreateAt time.Time `xorm:"created"`
+}
+
