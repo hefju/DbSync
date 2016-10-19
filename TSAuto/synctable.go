@@ -24,7 +24,7 @@ func init() {
 	}
 	err = engine.Sync2(new(Coordinate), new(PageProfile),
 		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
-	new(TaskSchedule))
+	new(TaskSchedule),new(SystemConfig))
 
 	if err != nil {
 		log.Println(err)
@@ -149,3 +149,11 @@ type TaskSchedule struct {
 	Status string//Unstart, Running, Stopp, Finish
 
 }
+type SystemConfig struct{
+	ID int64
+	Category string
+	Key string
+	Value string
+	CreateAt time.Time `xorm:"created"`
+}
+
