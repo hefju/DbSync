@@ -24,7 +24,8 @@ func init() {
 	}
 	err = engine.Sync2(new(Coordinate), new(PageProfile),
 		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
-		new(SystemConfig))
+	new(TaskSchedule))
+
 	if err != nil {
 		log.Println(err)
 	}
@@ -139,11 +140,12 @@ type IndependentImaging struct {
 	User      string
 }
 
-type SystemConfig struct{
+type TaskSchedule struct {
 	ID int64
-	Category string
-	Key string
-	Value string
-	CreateAt time.Time `xorm:"created"`
-}
+	Name string//拍照
+	Description string
+	Time1 string
+	Time2 string
+	Status string//Unstart, Running, Stopp, Finish
 
+}
