@@ -142,10 +142,11 @@ type IndependentImaging struct {
 
 type TaskSchedule struct {
 	ID int64
-	Name string//拍照
+	BoardID string
+	TaskName string//拍照
 	Description string
-	Time1 string
-	Time2 string
+	TimeBegin string
+	TimeEnd string
 	Status string//Unstart, Running, Stopp, Finish
 
 }
