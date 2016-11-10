@@ -157,4 +157,55 @@ type SystemConfig struct{
 	Value string
 	CreateAt time.Time `xorm:"created"`
 }
+//自动执行的参数
+type AutomaticParam struct {
+	ID int64
+	BoardID string //板子的ID
+	TaskName string//任务名称
+	TaskParam string//下发参数
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
