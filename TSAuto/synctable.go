@@ -24,19 +24,45 @@ func init() {
 	}
 	err = engine.Sync2(new(Coordinate), new(PageProfile),
 		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
-	new(TaskSchedule),new(SystemConfig))
+	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
+	new(BoxInfo),
+	new(CellPlateInfo),
+	new(CellSelectInfo),
+	)
 
 	if err != nil {
 		log.Println(err)
 	}
 }
 
-func SyncDb() {
-	//	var err error
-
-	//	engine, err = xorm.NewEngine("sqlite3", "./test.db")
-	//	log.Println("end")
+//箱子 2016.11.20
+type BoxInfo struct {
+	ID int64
+	BoxId string  //主键
+	BoxNo string
+	ProjectId string
+	ProjectName string
 }
+//板子的信息
+type  CellPlateInfo struct  {
+	ID int64
+	BoxId string  //外键
+	PlateId string //主键
+	PlateName string
+	PlatePos string
+	Tid string
+	StartTime string
+}
+//选中的孔
+type  CellSelectInfo struct  {
+	ID int64
+	PlateId string     //外键  联合主键
+	SelectedCell string //联合主键
+	//IsSelected string
+}
+
+
+
 
 func Insert() int64 {
 	//SyncDb()
@@ -48,6 +74,7 @@ func Insert() int64 {
 	return count
 }
 
+//坐标
 type Coordinate struct {
 	ID              int64 //`xorm:pk,autoincr`
 	CoordinateID    int
@@ -69,6 +96,7 @@ type Coordinate struct {
 	UpdatedAt       time.Time `xorm:"updated"`
 	CreateAt        time.Time `xorm:"created"`
 }
+//下拉框
 type PageProfile struct {
 	ID          int64
 	CustomID    string
@@ -84,7 +112,7 @@ type PageProfile struct {
 	UpdatedAt   time.Time `xorm:"updated"`
 	CreateAt    time.Time `xorm:"created"`
 }
-
+//
 type Microplate struct {
 	ID             int64
 	MicroplateName string
@@ -119,6 +147,7 @@ type MicroplateInfo2 struct {
 	Wells96 string
 
 }
+//系统拍照
 type SystemImaging struct {
 	ID                int64
 	SourcePlateName   string
@@ -128,7 +157,7 @@ type SystemImaging struct {
 	StartTime         string
 	EndTime           string
 }
-
+//独立成像
 type IndependentImaging struct {
 	ID                int64
 	Name              string
@@ -140,6 +169,7 @@ type IndependentImaging struct {
 	User      string
 }
 
+//任务列表
 type TaskSchedule struct {
 	ID int64
 	BoardID string
@@ -150,6 +180,7 @@ type TaskSchedule struct {
 	Status string//Unstart, Running, Stopp, Finish
 
 }
+//系统配置
 type SystemConfig struct{
 	ID int64
 	Category string
