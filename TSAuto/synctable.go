@@ -22,17 +22,22 @@ func init() {
 	if err != nil {
 		log.Println(err)
 	}
-	err = engine.Sync2(new(Coordinate), new(PageProfile),
-		new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
+	err = engine.Sync2(new(Coordinate), new(PageProfile),new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
 	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
-	new(BoxInfo),
-	new(CellPlateInfo),
-	new(CellSelectInfo),
+	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
+	new(JvUSER),
 	)
 
 	if err != nil {
 		log.Println(err)
 	}
+}
+
+//2016.11.23 学习java
+type JvUSER struct {
+	ID int64
+	Name string
+	Password string
 }
 
 //箱子 2016.11.20
@@ -186,7 +191,7 @@ type SystemConfig struct{
 	Category string
 	Key string
 	Value string
-	CreateAt time.Time `xorm:"created"`
+	CreateAt string//time.Time `xorm:"created"`
 }
 //自动执行的参数
 type AutomaticParam struct {
