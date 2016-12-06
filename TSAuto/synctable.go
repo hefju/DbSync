@@ -25,7 +25,7 @@ func init() {
 	err = engine.Sync2(new(Coordinate), new(PageProfile),new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
 	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
 	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
-	new(JvUSER),
+	new(JvUSER),new(USER),
 	)
 
 	if err != nil {
@@ -33,8 +33,14 @@ func init() {
 	}
 }
 
+
 //2016.11.23 学习java
 type JvUSER struct {
+	ID int64
+	Name string
+	Password string
+}
+type USER struct {
 	ID int64
 	Name string
 	Password string
@@ -51,7 +57,7 @@ type BoxInfo struct {
 //板子的信息
 type  CellPlateInfo struct  {
 	ID int64
-	BoxId string  //外键
+	BoxNo string  //外键, 01A,01C
 	PlateId string //主键
 	PlateName string
 	PlatePos string
