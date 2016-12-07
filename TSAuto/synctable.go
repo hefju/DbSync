@@ -53,6 +53,7 @@ type BoxInfo struct {
 	BoxNo string
 	ProjectId string
 	ProjectName string
+	Statu int
 }
 //板子的信息
 type  CellPlateInfo struct  {
@@ -63,6 +64,7 @@ type  CellPlateInfo struct  {
 	PlatePos string
 	Tid string
 	StartTime string
+	Statu int
 }
 //选中的孔
 type  CellSelectInfo struct  {
