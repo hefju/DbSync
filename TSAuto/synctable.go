@@ -49,8 +49,8 @@ type USER struct {
 //箱子 2016.11.20
 type BoxInfo struct {
 	ID int64
-	BoxId string  //主键
-	BoxNo string
+	BoxId string  //1,2,3, 28,29, 不是主键
+	BoxNo string  //01C, 01A
 	ProjectId string
 	ProjectName string
 	Statu int
@@ -59,7 +59,7 @@ type BoxInfo struct {
 type  CellPlateInfo struct  {
 	ID int64
 	BoxNo string  //外键, 01A,01C
-	PlateId string //主键
+	PlateId string //不是主键
 	PlateName string
 	PlatePos string
 	Tid string
