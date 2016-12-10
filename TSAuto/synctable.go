@@ -25,7 +25,7 @@ func init() {
 	err = engine.Sync2(new(Coordinate), new(PageProfile),new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
 	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
 	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
-	new(JvUSER),new(USER),
+	new(JvUSER),new(USER),new(Power),
 	)
 
 	if err != nil {
@@ -33,6 +33,20 @@ func init() {
 	}
 }
 
+
+//2016.12.10 ldh充电量
+type Power struct {
+	ID int64
+	FYear int
+	FMonth int
+	FDay int
+	Line string
+	Car string
+	Pw float32
+	Soc1 int
+	Soc2 int
+	FromFile string
+}
 
 //2016.11.23 学习java
 type JvUSER struct {
