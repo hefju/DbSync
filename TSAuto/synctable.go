@@ -25,7 +25,7 @@ func init() {
 	err = engine.Sync2(new(Coordinate), new(PageProfile),new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
 	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
 	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
-	new(JvUSER),new(USER),new(Power),
+	new(JvUSER),new(USER),new(Power),new(Charge),
 	)
 
 	if err != nil {
@@ -35,6 +35,25 @@ func init() {
 
 
 //2016.12.10 ldh充电量
+type Charge struct {
+	ID int64
+	FYear int
+	FMonth int
+	FDay int
+	Pile string  //电桩
+	Card string //卡号
+	Line string  //线路
+	Car string   //车号
+	Chminute string//分钟
+	Money float32//金额
+	Pw float32 //电量
+	Soc1 int
+	Soc2 int
+	StDate string//开始时间
+	EdDate string//结束时间
+	Chtime string//充电时间
+	FromFile string
+}
 type Power struct {
 	ID int64
 	FYear int
