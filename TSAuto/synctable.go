@@ -219,6 +219,7 @@ type IndependentImaging struct {
 type TaskSchedule struct {
 	ID int64
 	BoardID string
+	Tid string     //rfid
 	TaskName string//拍照
 	Description string
 	TimeBegin string
