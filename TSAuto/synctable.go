@@ -103,6 +103,7 @@ type  CellPlateInfo struct  {
 type  CellSelectInfo struct  {
 	ID int64
 	PlateId string     //外键  联合主键
+	Tid string
 	SelectedCell string //联合主键
 	//IsSelected string
 }
@@ -239,7 +240,14 @@ type SystemConfig struct{
 type AutomaticParam struct {
 	ID int64
 	BoardID string //板子的ID
+	Tid string
 	TaskName string//任务名称
+	FocusX int  //对焦x
+	FocusY int  //对焦y
+	FocusZ int//对焦z
+	Lensel int//放大倍数, 4,10,20
+	Filtersel int//滤镜
+	FluExposureTime string//曝光时间
 	TaskParam string//下发参数
 }
 
