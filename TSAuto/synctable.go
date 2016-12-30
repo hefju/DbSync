@@ -17,7 +17,7 @@ var engine *xorm.Engine
 func init() {
 	var err error
 	engine, err = xorm.NewEngine("sqlite3", "./test.db")
-	//engine.ShowSQL = true
+	engine.ShowSQL(true)
 	engine.SetMapper(core.SameMapper{})
 	if err != nil {
 		log.Println(err)
@@ -203,6 +203,9 @@ type SystemImaging struct {
 	Project           string
 	StartTime         string
 	EndTime           string
+	PhotoPath	string//保存路径
+	ImagingType string//是system,还是idependent
+
 }
 //独立成像
 type IndependentImaging struct {
