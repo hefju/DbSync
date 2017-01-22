@@ -25,12 +25,22 @@ func init() {
 	err = engine.Sync2(new(Coordinate), new(PageProfile),new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
 	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
 	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
-	new(JvUSER),new(USER),new(Power),new(Charge),
+	new(JvUSER),new(USER),new(Power),new(Charge),new(Log),
 	)
 
 	if err != nil {
 		log.Println(err)
 	}
+}
+
+//2017.1.22
+type Log struct {
+	ID int64
+	Date time.Time
+	Thread string
+	Level string
+	Logger string
+	Msg string
 }
 
 
