@@ -25,7 +25,7 @@ func init() {
 	err = engine.Sync2(new(Coordinate), new(PageProfile),new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
 	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
 	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
-	new(JvUSER),new(USER),new(Power),new(Charge),
+	new(JvUSER),new(USER),new(Power),new(Charge),new(ProductCategory),
 	)
 
 	if err != nil {
@@ -33,6 +33,11 @@ func init() {
 	}
 }
 
+type ProductCategory struct {
+	ProductCategoryID int `xorm:"pk","autoincr"`
+	Name string
+
+}
 
 //2016.12.10 ldh充电量
 type Charge struct {
