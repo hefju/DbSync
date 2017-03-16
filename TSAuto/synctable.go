@@ -38,8 +38,10 @@ type WorkItem struct{
 	ID int64
 	Code string
 	Name string
-	CommandID int64
+	ParentId int64
 	Orders float32
+	CommandID int64
+
 }
 //执行命令
 type CommandS struct {
@@ -47,6 +49,7 @@ type CommandS struct {
 	Command string
 	Param string
 	ParentId int64
+	Orders float32
 }
 
 type ProductCategory struct {
