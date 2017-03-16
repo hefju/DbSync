@@ -23,16 +23,37 @@ func init() {
 		log.Println(err)
 	}
 	err = engine.Sync2(new(Coordinate), new(PageProfile),new(Microplate), new(MicroplateInfo),new(MicroplateInfo2), new(SystemImaging), new(IndependentImaging),
-	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,
-	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
-	new(JvUSER),new(USER),new(Power),new(Charge),new(Log),
+	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
+	new(JvUSER),new(USER),new(Power),new(Charge),new(Log),new(ProductCategory),
+		//2017TS新项目
+		new(WorkItem),new(CommandS),
 	)
 
 	if err != nil {
 		log.Println(err)
 	}
 }
+//工作流程
+type WorkItem struct{
+	ID int64
+	Code string
+	Name string
+	CommandID int64
+	Orders float32
+}
+//执行命令
+type CommandS struct {
+	ID int64
+	Command string
+	Param string
+	ParentId int64
+}
 
+type ProductCategory struct {
+	ProductCategoryID int64
+	Name string
+	Other string
+}
 //2017.1.22
 type Log struct {
 	ID int64
