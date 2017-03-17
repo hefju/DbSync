@@ -36,11 +36,13 @@ func init() {
 //工作流程
 type WorkItem struct{
 	ID int64
-	Code string
-	Name string
-	ParentId int64
-	Orders float32
-	CommandID int64
+	Name string    //工作名称
+	Layer int      //层
+	Activate bool  //激活
+	ParentId int64 //父节点
+	Orders float32 //排序
+	Description string//描述
+	CommandID int64//命令ID
 
 }
 //执行命令
