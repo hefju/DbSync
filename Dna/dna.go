@@ -4,6 +4,7 @@ import (
 	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 	"log"
+	"os"
 )
 
 func Donothing() {
@@ -13,6 +14,18 @@ func Donothing() {
 var engine *xorm.Engine
 
 func init() {
+
+	path := "./Tsdata"
+	if _, err := os.Stat(path); err == nil {
+	} else {
+		err := os.MkdirAll(path, 0711)
+
+		if err != nil {
+			log.Println(err)
+			return
+		}
+	}
+
 	var err error
 	engine, err = xorm.NewEngine("sqlite3", "./Tsdata/dna.db")
 	engine.ShowSQL(true)
