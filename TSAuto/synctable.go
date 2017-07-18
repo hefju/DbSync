@@ -26,12 +26,18 @@ func init() {
 	new(TaskSchedule),new(SystemConfig),new(AutomaticParam)	,	new(BoxInfo),	new(CellPlateInfo),	new(CellSelectInfo),
 	new(JvUSER),new(USER),new(Power),new(Charge),new(Log),new(ProductCategory),
 		//2017TS新项目
-		new(WorkItem),new(CommandS),
+		new(WorkItem),new(CommandS),new(Entity),
 	)
 
 	if err != nil {
 		log.Println(err)
 	}
+}
+type Entity struct {
+	ID int64
+	ClassName string
+	ClassValue string
+	CreateAt time.Time
 }
 //工作流程
 type WorkItem struct{
@@ -115,6 +121,17 @@ type USER struct {
 	Password string
 }
 
+
+func Insert() int64 {
+	//SyncDb()
+	c := Coordinate{CoordinateOrder: 1, CoordinateName: "first form"}
+	count, err := engine.Insert(&c) //InsertOne
+	if err != nil {
+		log.Fatal(err)
+	}
+	return count
+}
+
 //箱子 2016.11.20
 type BoxInfo struct {
 	ID int64
@@ -147,15 +164,6 @@ type  CellSelectInfo struct  {
 
 
 
-func Insert() int64 {
-	//SyncDb()
-	c := Coordinate{CoordinateOrder: 1, CoordinateName: "first form"}
-	count, err := engine.Insert(&c) //InsertOne
-	if err != nil {
-		log.Fatal(err)
-	}
-	return count
-}
 
 //坐标
 type Coordinate struct {

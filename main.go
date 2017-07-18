@@ -8,13 +8,15 @@ import (
     "fmt"
     "github.com/hefju/DbSync/CSharp"
     "github.com/hefju/DbSync/TSAuto"
+    "github.com/hefju/DbSync/Dna"
 )
 func main(){
 
+    Dna.Donothing()
     CSharp.Donothing()
    // CSharp.Convert()
     TSAuto.Donothing()//   TSAuto.SyncDb()
    // TSAuto.SyncDb()
-    TSAuto. Update0508()
+   // TSAuto. Update0508()
     fmt.Println("main end")
 }
