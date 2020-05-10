@@ -7,14 +7,27 @@ package main
 import (
     "fmt"
     "github.com/hefju/DbSync/CSharp"
+    "github.com/hefju/DbSync/IncubatorServer"
     "github.com/hefju/DbSync/TSAuto"
 )
 func main(){
 
-    CSharp.Donothing()
-   // CSharp.Convert()
-    TSAuto.Donothing()//   TSAuto.SyncDb()
-   // TSAuto.SyncDb()
-    TSAuto. Update0508()
+
+    test2020()
+
     fmt.Println("main end")
+}
+
+
+func test2020(){
+    IncubatorServer.SyncDbSchema()
+}
+
+
+func test2017(){
+    CSharp.Donothing()
+    // CSharp.Convert()
+    TSAuto.Donothing()//   TSAuto.SyncDb()
+    // TSAuto.SyncDb()
+    TSAuto. Update0508()
 }
