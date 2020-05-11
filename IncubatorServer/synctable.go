@@ -20,7 +20,8 @@ func SyncDbSchema() {
 		log.Println(err)
 	}
 	err = engine.Sync2(new(TbHelp), new(TbUpdate),new(TbUser), new(TbUserLogin),
-	)
+		new(TbUserOperation),
+		)
 
 	if err != nil {
 		log.Println(err)
@@ -54,6 +55,14 @@ type TbUser struct {
 }
 
 type TbUserLogin struct {
+	ID int64
+	Time string
+	User string
+	Operation string
+}
+
+
+type TbUserOperation struct {
 	ID int64
 	Time string
 	User string
