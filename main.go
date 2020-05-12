@@ -20,7 +20,8 @@ func main(){
 
 
 func test2020(){
-    IncubatorServer.SyncDbSchema()
+ //   IncubatorServer.SyncDbSchema()
+    IncubatorServer.MockData()
 }
 
 

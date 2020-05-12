@@ -1,17 +1,19 @@
 package IncubatorServer
 
 import (
+	"fmt"
 	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
+	"time"
 )
 
 
 
 var engine *xorm.Engine
 
-func SyncDbSchema() {
+func init() {
 	var err error
 	engine, err = xorm.NewEngine("sqlite3", "./incubator.db")
 	engine.ShowSQL(true)
@@ -20,7 +22,8 @@ func SyncDbSchema() {
 		log.Println(err)
 	}
 	err = engine.Sync2(new(TbHelp), new(TbUpdate),new(TbUser), new(TbUserLogin),
-		new(TbUserOperation),
+		new(TbUserOperation),	new(TbUserManagement),new(TbIncubatorOperation),
+		new(TbIncubatorAudit),new(TbIncubatorNotification),
 		)
 
 	if err != nil {
@@ -31,7 +34,7 @@ func SyncDbSchema() {
 type TbHelp struct{
 	ID int64
 	Title string
-	Content int
+	Content string
 	CreateAt int64
 }
 type TbUpdate struct{
@@ -69,8 +72,78 @@ type TbUserOperation struct {
 	Operation string
 }
 
+type TbUserManagement struct {
+	ID int64
+	UserName string
+	Email string
+	UserGroup string
+
+	PhoneNumber string
+	Description string
+	Uid string
+	CreateAt int
+}
+
+type TbIncubatorOperation struct {
+	ID int64
+	Time string
+	Incubators string
+	User string
+	Operation string
+}
+
+type TbIncubatorAudit struct {
+	ID int64
+	Time string
+	ProjectName string
+	CellName string
+	MediumName string
+	IncubatorNumber string
+	Approver string
+	Results string
+}
+
+type TbIncubatorNotification struct {
+	ID int64
+	Time string
+	Notification string
+}
 
 
+
+func MockData(){
+	//return
+	session := engine.NewSession()
+	defer session.Close()
+
+	err := session.Begin()
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	for i:=0;i<72 ;i++ {
+
+	//	x:=TbUserOperation{Time:time.Now().AddDate(0,0,-1*i).Format("2006-01-02 15:04:05"),User:"abab",Operation:"add time"}
+   //x:=TbUserManagement{UserName:"abac",Email:"15827700360@qq.com",UserGroup:"senior", PhoneNumber:"1380013800",Description:"i am a experimenter,i am a exp"}
+	//x:=TbHelp{Title:"WindowStartupLocation-CenterScreen",Content:"Balabalabalabalabalabalabalabalabalabalabalabalabalabalabalabalabalabalabalabalabalabalabala"}
+
+	//x:=TbIncubatorOperation{Time:time.Now().Add(time.Hour*-1).Format("2006-01-02 15:04:05"), Incubators:"5B",User:"Adam",Operation:"Open door"}
+	 mytime:=time.Now().Add(time.Hour*(-4)*time.Duration(i)).Format("2006-01-02 15:04:05")
+	//x:=TbIncubatorAudit{Time:mytime,ProjectName:"Embryonic stem cell research",CellName:"293E",MediumName:"acid borth",
+	//	IncubatorNumber:"13",Approver:"Adam",Results:"Agree"}
+
+	x:=TbIncubatorNotification{Time:mytime,Notification:"Embryonic stem cell research"}
+		_, err=session.Insert(&x)
+		if err != nil {
+			fmt.Println(err)
+		}
+		//fmt.Println(affected, err )
+	}
+	err = session.Commit()
+	if err != nil {
+		fmt.Println(err)
+	}
+}
 
 
 
