@@ -23,7 +23,7 @@ func init() {
 	}
 	err = engine.Sync2(new(TbHelp), new(TbUpdate),new(TbUser), new(TbUserLogin),
 		new(TbUserOperation),	new(TbUserManagement),new(TbIncubatorOperation),
-		new(TbIncubatorAudit),new(TbIncubatorNotification),
+		new(TbIncubatorAudit),new(TbIncubatorNotification),new(TbProjectOngoing),
 		)
 
 	if err != nil {
@@ -109,6 +109,17 @@ type TbIncubatorNotification struct {
 	Notification string
 }
 
+type TbProjectOngoing struct {
+	ID          int64
+	ProjectName string
+	Type        string
+	Template         string
+	StartTime        string
+	IncubationPeriod string
+	User             string
+	Incubators       string
+}
+
 
 
 func MockData(){
@@ -131,8 +142,9 @@ func MockData(){
 	 mytime:=time.Now().Add(time.Hour*(-4)*time.Duration(i)).Format("2006-01-02 15:04:05")
 	//x:=TbIncubatorAudit{Time:mytime,ProjectName:"Embryonic stem cell research",CellName:"293E",MediumName:"acid borth",
 	//	IncubatorNumber:"13",Approver:"Adam",Results:"Agree"}
+	//x:=TbIncubatorNotification{Time:mytime,Notification:"Embryonic stem cell research"}
+	x:=TbProjectOngoing{ProjectName:"Balabalabalabalaba",Type:"Production",Template:"xxx",StartTime:mytime,IncubationPeriod:"12day",User:"Adam",Incubators:"3A,6A,5B,6C"}
 
-	x:=TbIncubatorNotification{Time:mytime,Notification:"Embryonic stem cell research"}
 		_, err=session.Insert(&x)
 		if err != nil {
 			fmt.Println(err)
