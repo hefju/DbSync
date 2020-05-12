@@ -23,7 +23,7 @@ func init() {
 	}
 	err = engine.Sync2(new(TbHelp), new(TbUpdate),new(TbUser), new(TbUserLogin),
 		new(TbUserOperation),	new(TbUserManagement),new(TbIncubatorOperation),
-		new(TbIncubatorAudit),new(TbIncubatorNotification),new(TbProjectOngoing),
+		new(TbIncubatorAudit),new(TbIncubatorNotification),new(TbProjects),
 		)
 
 	if err != nil {
@@ -109,7 +109,7 @@ type TbIncubatorNotification struct {
 	Notification string
 }
 
-type TbProjectOngoing struct {
+type TbProjects struct {
 	ID          int64
 	ProjectName string
 	Type        string
@@ -118,6 +118,8 @@ type TbProjectOngoing struct {
 	IncubationPeriod string
 	User             string
 	Incubators       string
+	Status int  //0代表已结束,1代表在运行
+
 }
 
 
@@ -143,7 +145,7 @@ func MockData(){
 	//x:=TbIncubatorAudit{Time:mytime,ProjectName:"Embryonic stem cell research",CellName:"293E",MediumName:"acid borth",
 	//	IncubatorNumber:"13",Approver:"Adam",Results:"Agree"}
 	//x:=TbIncubatorNotification{Time:mytime,Notification:"Embryonic stem cell research"}
-	x:=TbProjectOngoing{ProjectName:"Balabalabalabalaba",Type:"Production",Template:"xxx",StartTime:mytime,IncubationPeriod:"12day",User:"Adam",Incubators:"3A,6A,5B,6C"}
+	x:=TbProjects{ProjectName:"Balabalabalabalaba",Type:"Production",Template:"xxx",StartTime:mytime,IncubationPeriod:"12day",User:"Adam",Incubators:"3A,6A,5B,6C",Status:0}
 
 		_, err=session.Insert(&x)
 		if err != nil {
